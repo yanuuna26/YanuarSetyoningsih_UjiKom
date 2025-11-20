@@ -27,7 +27,7 @@ public class Karakter : MonoBehaviour
             posisiKananKiri.x = Mathf.Clamp(posisiKananKiri.x, -setengahLebar, setengahLebar);
             //Vector3 pos = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.90f, 10f));
             Instantiate(peluru, posisiKananKiri, Quaternion.identity);
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            //rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
     }
 
