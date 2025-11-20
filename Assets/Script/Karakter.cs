@@ -8,6 +8,8 @@ public class Karakter : MonoBehaviour
     public float forceMultiplier = 10.0f;
     public float jumpForce = 5f;
     public Rigidbody2D rb;
+
+    public GameManager gameManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -28,6 +30,7 @@ public class Karakter : MonoBehaviour
             //Vector3 pos = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.90f, 10f));
             Instantiate(peluru, posisiKananKiri, Quaternion.identity);
             //rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            gameManager.sfx_peluru.Play();
         }
     }
 
@@ -39,5 +42,13 @@ public class Karakter : MonoBehaviour
         Vector2 posisiKananKiri = new Vector2(posisiMouse.x, transform.position.y); //drag kanan kiri saja
         posisiKananKiri.x = Mathf.Clamp(posisiKananKiri.x, -setengahLebar, setengahLebar); //drag kanan kiri sesuai ukuran scene
         transform.position = posisiKananKiri;
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("lantai"))
+        {
+            Debug.Log("Nyawa berkurang");
+        }
     }
 }

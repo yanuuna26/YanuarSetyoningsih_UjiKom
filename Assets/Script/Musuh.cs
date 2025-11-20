@@ -3,6 +3,9 @@ using UnityEngine;
 public class Musuh : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    //public GameManager gameManager;
+
     void Start()
     {
         
@@ -20,5 +23,12 @@ public class Musuh : MonoBehaviour
             //Debug.Log("Terkena peluru");
             Destroy(gameObject);
         }
+        if (collision.collider.CompareTag("lantai"))
+        {
+            //Debug.Log("Terkena lantai");
+            //gameManager.sfx_musuh_menang.Play();
+            Destroy(gameObject);
+        }
+        
     }
 }

@@ -1,10 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    public float waktu = 10;
+    public float waktu = 0;
     public float maxWaktu = 10;
     //public TMP_Text textTimer;
     public bool waktuBerjalan = true;
@@ -12,17 +13,21 @@ public class Timer : MonoBehaviour
 
     public Image progressFill;
 
+    public GameManager gameManager;
+
     void Start()
     {
-        StartCoroutine(hitungTimer());
+        hitungTimerCoroutine = StartCoroutine(hitungTimer());
     }
 
     void Update()
     {
-        
-            if(hitungTimerCoroutine != null)
+            if(waktu >= maxWaktu)
             {
                 StopCoroutine(hitungTimerCoroutine);
+                Time.timeScale = 0f;
+                PlayerPrefs.SetInt("ScoreAkhir", gameManager.score);
+                SceneManager.LoadScene("GameOver");
             }
     }
     IEnumerator hitungTimer()

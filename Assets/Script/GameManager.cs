@@ -11,6 +11,11 @@ public class GameManager : MonoBehaviour
     public bool masihSpawn = true;
     public int score;
     public TMP_Text textScore;
+
+    public AudioSource sfx_peluru;
+    public AudioSource sfx_destroy_enemy;
+
+    public AudioSource sfx_musuh_menang;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -51,4 +56,5 @@ public class GameManager : MonoBehaviour
             GameObject objectBaru = Instantiate(musuh3, spawnPosition, Quaternion.identity);
         }
     }
+
 }

@@ -22,10 +22,12 @@ public class Peluru : MonoBehaviour
         if (collision.collider.CompareTag("musuh"))
         {
             //Debug.Log("Terkena musuh");
+            gameManager.sfx_destroy_enemy.Play();
             gameManager.score += 10;
             gameManager.textScore.text = gameManager.score.ToString();
             Destroy(gameObject);
         }
+        
     }
 
     
